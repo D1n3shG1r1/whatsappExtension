@@ -1,0 +1,37 @@
+{
+  "name": "SCIP Whatsapp Export",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  /*"content_security_policy": "script-src 'self' https://whatsapp.scip.co; object-src 'self'",*/
+  /*"permissions": ["clipboardRead", "clipboardWrite", "contextMenus", "cookies", "history", "notifications", "storage", "tabs", "http://visual.scip.co/*","https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox/*" ],
+  */
+  "permissions": ["clipboardRead", "clipboardWrite", "contextMenus", "cookies", "history", "notifications", "storage", "tabs", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "browseractions/popup.html",
+    "default_icon": {
+      "16": "/images/export16.png",
+      "32": "/images/export32.png",
+      "48": "/images/export32.png",
+      "128": "/images/export128.png"
+    }
+
+},
+"icons": {
+    "16": "/images/export16.png",
+    "32": "/images/export32.png",
+    "48": "/images/export32.png",
+    "128": "/images/export128.png"
+  },
+  "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "src/inject/inject.css", "js/jquery-ui-1.13.1/jquery-ui.min.css", "js/tagit/jquery.tagit.css"],
+      "js": [ "js/jquery/jquery.min.js", "src/inject/inject.js" , "js/jquery-ui-1.13.1/jquery-ui.js", "js/tagit/tag-it.js"],
+      "matches": [ "https://web.whatsapp.com/*","https://web.whatsapp.com/"/*, "https://whatsapp.scip.co/*"*/ ],
+      "run_at": "document_end"
+   }]
+  /*"web_accessible_resources":["images/export16.png", "images/export32.png", "images/export48.png", "images/export128.png", "*.js", "*.css"]*/
+}
